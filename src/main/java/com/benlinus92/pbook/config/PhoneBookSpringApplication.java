@@ -13,7 +13,5 @@ public class PhoneBookSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PhoneBookSpringApplication.class, args);
-		//fdfdfsdfsd
-		//test commiting
 	}
 }
