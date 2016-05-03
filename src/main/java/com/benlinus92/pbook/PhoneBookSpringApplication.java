@@ -1,4 +1,4 @@
-package com.benlinus92.pbook.config;
+package com.benlinus92.pbook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

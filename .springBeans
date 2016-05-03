@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.benlinus92.pbook.config.PhoneBookSpringApplication</config>
+		<config>java:com.benlinus92.pbook.PhoneBookSpringApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
