@@ -1,9 +1,14 @@
 
 var app = angular.module("PhonebookApp", ["ngRoute"]);
-app.config(["$routeProvider", function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 	.when("/", {
-		templateUrl: "/index",
+		templateUrl: "partials/home.html",
 		controller: "EntryController"
+	})
+	.when("/register", {
+		templateUrl: "partials/signup.html",
+		controller: "RegisterController"
 	});
-}]);
+	$locationProvider.html5Mode(true);
+});

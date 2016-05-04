@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WebController {
 
-	@RequestMapping("/")
+	@RequestMapping({
+		"/",
+		"/register",
+		"/home"
+	})
 	public String index() {
 		return "index";
+		//return "forward:/index.html";
 	}
 }
