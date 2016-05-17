@@ -1,14 +1,14 @@
-<div class="container">
-	<form class="form-horizontal" action='' method="POST">
+<div class="signup-form">
+	<form novalidate class="form-horizontal" name="form">
 	  <fieldset>
 	    <div id="legend">
-	      <legend class="">Register</legend>
+	      <legend class="text-center">Register</legend>
 	    </div>
 	    <div class="control-group">
 	      <!-- Username -->
 	      <label class="control-label"  for="username">Username</label>
 	      <div class="controls">
-	        <input type="text" id="username" name="username" placeholder="" class="input-xlarge"></input>
+	        <input type="text" ng-model="user.username" id="username" ng-minlength="4" ng-class="{'has-error': hasError('username', 'required')}" name="username" placeholder="" class="input-xlarge form-control" required></input>
 	        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
 	      </div>
 	    </div>
@@ -17,7 +17,7 @@
 	      <!-- E-mail -->
 	      <label class="control-label" for="email">E-mail</label>
 	      <div class="controls">
-	        <input type="text" id="email" name="email" placeholder="" class="input-xlarge"></input>
+	        <input type="text" id="email" ng-model="user.email" name="email" placeholder="" class="input-xlarge form-control" required>
 	        <p class="help-block">Please provide your E-mail</p>
 	      </div>
 	    </div>
@@ -26,8 +26,8 @@
 	      <!-- Password-->
 	      <label class="control-label" for="password">Password</label>
 	      <div class="controls">
-	        <input type="password" id="password" name="password" placeholder="" class="input-xlarge"></input>
-	        <p class="help-block">Password should be at least 4 characters</p>
+	        <input type="password" id="password" ng-model="user.password" ng-minlength="5" ng-class="{'has-error': hasError('password', 'required')}" name="password" placeholder="" class="input-xlarge form-control" required></input>
+	        <p class="help-block">Password should be at least 5 characters</p>
 	      </div>
 	    </div>
 	 
@@ -35,16 +35,27 @@
 	      <!-- Password -->
 	      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
 	      <div class="controls">
-	        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge"></input>
+	        <input type="password" id="password_confirm" ng-model="user.passConf" ng-class="{'has-error': hasError('password_confirm', 'required')}" ng-minlength="5" name="password_confirm" placeholder="" class="input-xlarge form-control" required></input>
 	        <p class="help-block">Please confirm password</p>
 	      </div>
 	    </div>
-	 
+	 	<div class="control-group">
+	      <label class="control-label"  for="full_name">Full Name</label>
+	      <div class="controls form-inline full-name-control">
+	        <input type="text" id="full-real-name" ng-model="user.realName" ng-class="{'has-error': hasError('real_name', 'required')}" name="real_name" placeholder="Name" class="form-control" required></input>
+	        <input type="text" id="full-real-father" ng-model="user.realFather" ng-class="{'has-error': hasError('real_father', 'required')}" name="real_father" placeholder="Father Name" class="form-control" required></input>
+	      </div>
+	      <div class="controls">
+	      	<input type="text" id="full-real-surname" ng-model="user.realSurname" ng-class="{'has-error': hasError('real_surname', 'required')}" name="real_surname" placeholder="Surname" class="form-control" required></input>
+	      	<p class="help-block">Please enter your full name</p>
+	      </div>
+	    </div>
 	    <div class="control-group">
 	      <!-- Button -->
-	      <div class="controls">
-	        <button class="btn btn-success">Register</button>
+	      <div class="btn-controls">
+	        <button ng-click="send()" class="btn btn-success">Register</button>
 	      </div>
+	      <p class="error-block" ng-show="hasFormError()" style="color: red">Some fields has invalid input</p>
 	    </div>
 	  </fieldset>
 	</form>
