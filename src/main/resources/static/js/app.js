@@ -7,12 +7,16 @@ app.config(function($routeProvider, $locationProvider) {
 		controller: "HomeController"
 	})
 	.when("/register", {
-		templateUrl: "partials/signup.html",
+		templateUrl: "partials/register.html",
 		controller: "RegisterController"
 	})
 	.when("/auth", {
 		templateUrl: "partials/auth.html",
 		controller: "AuthController"
+	})
+	.when("/dashboard", {
+		templateUrl: "partials/dashboard.html",
+		controller: "DashController"
 	});
 	$locationProvider.html5Mode(true);
 });

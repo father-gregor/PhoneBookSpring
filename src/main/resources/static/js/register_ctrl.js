@@ -1,5 +1,5 @@
 
-app.controller("RegisterController", function($scope, $location, EntryService) {
+app.controller("RegisterController", function($scope, $location, AppService) {
 	$scope.user = {
 		username: null,
 		email: null,
@@ -16,7 +16,7 @@ app.controller("RegisterController", function($scope, $location, EntryService) {
 				password: $scope.user.password,
 				fio: $scope.user.realName + " " + $scope.user.realFather + " " + $scope.user.realSurname
 			};
-			EntryService.registerUser(endUser)
+			AppService.registerUser(endUser)
 			.then(function(data) {
 				console.log(data);
 				$location.path(data);

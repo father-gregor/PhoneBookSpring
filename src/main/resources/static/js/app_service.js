@@ -1,5 +1,5 @@
 
-app.factory("EntryService", function($http, $q, $location) {
+app.factory("AppService", function($http, $q, $location) {
 	return {
 		createEntry: function(entry) {
 			return $http.get("/create-entry", entry)
@@ -15,6 +15,17 @@ app.factory("EntryService", function($http, $q, $location) {
 		},
 		registerUser: function(user) {
 			return $http.post("/register-user", user)
+			.then(
+					function(response) {
+						return response.data;
+					},
+					function(err) {
+						return $q.reject(err);
+					}
+			);
+		},
+		authenticateUser: function(credentials) {
+			return $http.post("/login", credentials)
 			.then(
 					function(response) {
 						return response.data;

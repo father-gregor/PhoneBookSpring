@@ -64,7 +64,7 @@
     box-sizing: border-box;
 }
 
-.form-signin #inputEmail,
+.form-signin #inputLogin,
 .form-signin #inputPassword {
     direction: ltr;
     height: 44px;

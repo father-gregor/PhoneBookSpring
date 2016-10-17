@@ -1,5 +1,6 @@
 
-app.controller("HomeController", function($scope, $location) {
+app.controller("HomeController", function($rootScope, $scope, $location) {
+	$rootScope.authenticated = false;
 	$scope.getPath = function(path) {
 		$location.path(path);
 	}

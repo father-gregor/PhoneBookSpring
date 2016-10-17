@@ -27,8 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/", "/home", "/register", "/auth").permitAll()
+		.antMatchers("/dashboard").hasRole("USER")
 		.and().formLogin().loginPage("/auth")
-		.usernameParameter("login").passwordParameter("pass")
+		.usernameParameter("login").passwordParameter("password")
 		.and().exceptionHandling().accessDeniedPage("/")
 		.and().csrf().disable();
 	}
