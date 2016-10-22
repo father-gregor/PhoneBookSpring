@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.benlinus92.pbook.domains.Entry;
 import com.benlinus92.pbook.domains.Profile;
 import com.benlinus92.pbook.domains.User;
 
@@ -12,6 +13,10 @@ import com.benlinus92.pbook.domains.User;
 @Transactional
 public interface PhonebookService {
 	public boolean addNewUser(User user);
-	public User findUserByUsername(String login);
+	public User findUserByUsername(String username);
 	public List<Profile> getProfiles();
+	public List<Entry> getEntryByUsername(String username);
+	public void createEntry(Entry entry, String username);
+	public Entry getEntryById(int entryId, String username);
+	public void updateEntry(Entry entry);
 }

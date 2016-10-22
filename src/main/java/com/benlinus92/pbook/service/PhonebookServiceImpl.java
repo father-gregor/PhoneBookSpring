@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.benlinus92.pbook.dao.PhonebookDao;
+import com.benlinus92.pbook.domains.Entry;
 import com.benlinus92.pbook.domains.Profile;
 import com.benlinus92.pbook.domains.User;
 
@@ -27,13 +28,41 @@ public class PhonebookServiceImpl implements PhonebookService {
 		return false;
 	}
 	@Override
-	public User findUserByUsername(String login) {
-		return dao.findUserByUsername(login);
+	public User findUserByUsername(String username) {
+		return dao.findUserByUsername(username);
 	}
 	@Override
 	public List<Profile> getProfiles() {
 		List<Profile> auth = new ArrayList<>();
 		auth.add(dao.findProfile("USER"));
 		return auth;
+	}
+	@Override
+	public List<Entry> getEntryByUsername(String username) {
+		User user = this.findUserByUsername(username);
+		if(user != null) {
+			return dao.getEntry(user);
+		} else {
+			return null;
+		}
+	}
+	@Override
+	public void createEntry(Entry entry, String username) {
+		entry.setUser(this.findUserByUsername(username));
+		dao.createEntry(entry);
+	}
+	@Override
+	public Entry getEntryById(int entryId, String username) {
+		User user = this.findUserByUsername(username);
+		Entry entry = dao.getSingleEntry(entryId);
+		if(entry.getUser().getUserId() == user.getUserId())
+			return entry;
+		return null;
+	}
+	@Override
+	public void updateEntry(Entry entry) {
+		Entry tempEntry = dao.getSingleEntry(entry.getEntryId());
+		entry.setUser(tempEntry.getUser());
+		dao.updateEntry(entry);
 	}
 }

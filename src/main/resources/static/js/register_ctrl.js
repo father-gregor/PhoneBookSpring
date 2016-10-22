@@ -1,5 +1,5 @@
 
-app.controller("RegisterController", function($scope, $location, AppService) {
+app.controller("RegisterController", function($rootScope, $scope, $location, AppService) {
 	$scope.user = {
 		username: null,
 		email: null,
@@ -41,4 +41,6 @@ app.controller("RegisterController", function($scope, $location, AppService) {
 		//$location.path(path);
 		console.log("Work");
 	}
+	
+	$rootScope.isAuthenticated("/dashboard");
 });

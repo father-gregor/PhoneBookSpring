@@ -1,12 +1,21 @@
-<div class="container">
-	<table>
+<div class="container" ng-cloak>
+	<button type="button" class="btn btn-default" ng-click="getPath('/create-entry')">Create entry</button>
+	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Firstname</th>
+				<th>Name</th>
+				<th>Surname</th>
 				<th>Fathername</th>
-				<th>Lastname</th>
-				<th>Phone Number</th>
+				<th>Mobile Number</th>
 			</tr>
 		</thead>
+	<tbody ng-show="entries">
+      <tr ng-repeat="x in entries" ng-click="openEntry(x)" ng-mouseover="deleteIcon=true" ng-mouseleave="deleteIcon=false">
+        <td>{{x.name}}</td>
+        <td>{{x.surname}}</td>
+        <td>{{x.fatherName}}</td>
+        <td>{{x.mobileNumb}} <span class="glyphicon glyphicon-remove delete-icon" ng-click="removeEntry(x)" ng-show="deleteIcon"></span></td>
+      </tr>
+    </tbody>
 	</table>
 </div>

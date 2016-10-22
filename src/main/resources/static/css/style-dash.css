@@ -1,0 +1,16 @@
+td {
+	width: 150px;
+}
+.table-hover {
+	cursor: pointer;
+}
+.delete-icon {
+	float: right;
+	padding-top: 2px;
+	padding-right: 10px;
+	font-size: 17px;
+	cursor: pointer;
+}
+.delete-icon:hover {
+	color: #bd0000;
+}
