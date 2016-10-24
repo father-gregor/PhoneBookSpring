@@ -19,4 +19,5 @@ public interface PhonebookService {
 	public void createEntry(Entry entry, String username);
 	public Entry getEntryById(int entryId, String username);
 	public void updateEntry(Entry entry);
+	public void deleteEntry(int EntryId, String username);
 }

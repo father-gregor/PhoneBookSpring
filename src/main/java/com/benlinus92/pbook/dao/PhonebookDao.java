@@ -14,4 +14,5 @@ public interface PhonebookDao {
 	public void createEntry(Entry entry);
 	public Entry getSingleEntry(int entryId);
 	public void updateEntry(Entry entry);
+	public void deleteEntry(Entry entry);
 }

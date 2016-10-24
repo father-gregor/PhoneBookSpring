@@ -65,4 +65,10 @@ public class PhonebookServiceImpl implements PhonebookService {
 		entry.setUser(tempEntry.getUser());
 		dao.updateEntry(entry);
 	}
+	@Override
+	public void deleteEntry(int entryId, String username) {
+		Entry entry = this.getEntryById(entryId, username);
+		if(entry != null)
+			dao.deleteEntry(entry);
+	}
 }

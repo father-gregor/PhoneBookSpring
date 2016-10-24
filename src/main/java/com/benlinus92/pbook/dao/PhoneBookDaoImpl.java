@@ -76,4 +76,8 @@ public class PhoneBookDaoImpl implements PhonebookDao {
 	public void updateEntry(Entry entry) {
 		em.merge(entry);
 	}
+	@Override
+	public void deleteEntry(Entry entry) {
+		em.remove(entry);
+	}
 }

@@ -89,6 +89,13 @@ public class WebController {
 		}
 		return "/dashboard";
 	}
+	@RequestMapping(value="/delete-entry-{entryId}", method=RequestMethod.DELETE, produces="text/plain")
+	public @ResponseBody String deleteEntry(@PathVariable int entryId) {
+		System.out.println("DELETE ID _ " + entryId);
+		String username = getPrincipal();
+		service.deleteEntry(entryId, username);
+		return "/dashboard";
+	}
 	
 	private String getPrincipal() {
 		String userName = null;
