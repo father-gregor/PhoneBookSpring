@@ -79,6 +79,17 @@ app.factory("AppService", function($http, $q, $location) {
 						return $q.reject(err);
 					}
 			);
+		},
+		deleteEntry: function(entryId) {
+			return $http.delete("/delete-entry-" + entryId, entryId)
+			.then(
+					function(response) {
+						return response;
+					},
+					function(err) {
+						return $q.reject(err);
+					}
+			);
 		}
 	};
 });
