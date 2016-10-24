@@ -1,6 +1,8 @@
 
 app.controller("DashController", function($scope, $location, AppService, EntryService) {
 	$scope.showModal = false;
+	$scope.sortType = "name";
+	$scope.sortReverse = false;
 	$scope.getEntry = function() {
 		AppService.getEntry()
 		.then(function(resp) {
@@ -37,5 +39,19 @@ app.controller("DashController", function($scope, $location, AppService, EntrySe
 	}
 	$scope.closeModal = function() {
 		$scope.showModal = false;
+	}
+	$scope.changeSortType = function(type) {
+		if($scope.sortType === type)
+			$scope.sortReverse = !$scope.sortReverse;
+		else {
+			$scope.sortType = type;
+			$scope.sortReverse = false;
+		}
+	}
+	$scope.isArrowUp = function(type) {
+		return $scope.sortType === type && $scope.sortReverse;
+	}
+	$scope.isArrowDown = function(type) {
+		return $scope.sortType === type && !$scope.sortReverse;
 	}
  });

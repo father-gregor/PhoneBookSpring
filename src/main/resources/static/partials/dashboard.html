@@ -1,16 +1,33 @@
 <div class="container" ng-cloak>
 	<button type="button" class="btn btn-default" ng-click="getPath('/create-entry')">Create entry</button>
+	<div>Search in phonebook: <input type="text" class="form-control" placeholder="What to search for?" ng-model="searchQuery"></div>
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Surname</th>
-				<th>Fathername</th>
-				<th>Mobile Number</th>
+				<th ng-click="changeSortType('name')">
+					Name
+					<div ng-show="isArrowUp('name')" class="arrow-up"></div>
+					<div ng-show="isArrowDown('name')" class="arrow-down"></div>
+				</th>
+				<th ng-click="changeSortType('surname')">
+					Surname
+					<div ng-show="isArrowUp('surname')" class="arrow-up"></div>
+					<div ng-show="isArrowDown('surname')" class="arrow-down"></div>
+				</th>
+				<th ng-click="changeSortType('fatherName')">
+					Fathername
+					<div ng-show="isArrowUp('fatherName')" class="arrow-up"></div>
+					<div ng-show="isArrowDown('fatherName')" class="arrow-down"></div>
+				</th>
+				<th ng-click="changeSortType('mobileNumb')">
+					Mobile Number
+					<div ng-show="isArrowUp('mobileNumb')" class="arrow-up"></div>
+					<div ng-show="isArrowDown('mobileNumb')" class="arrow-down"></div>
+				</th>
 			</tr>
 		</thead>
 	<tbody ng-show="entries">
-      <tr ng-repeat="x in entries" ng-click="openEntry(x)" ng-mouseover="deleteIcon=true" ng-mouseleave="deleteIcon=false">
+      <tr ng-repeat="x in entries | orderBy:sortType:sortReverse | filter:searchQuery" ng-click="openEntry(x)" ng-mouseover="deleteIcon=true" ng-mouseleave="deleteIcon=false">
         <td>{{x.name}}</td>
         <td>{{x.surname}}</td>
         <td>{{x.fatherName}}</td>
