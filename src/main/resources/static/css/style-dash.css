@@ -1,16 +1,29 @@
 td {
 	width: 150px;
-}
-.table-hover {
 	cursor: pointer;
 }
 .delete-icon {
 	float: right;
-	padding-top: 2px;
 	padding-right: 10px;
-	font-size: 17px;
+	font-size: 18px;
 	cursor: pointer;
 }
 .delete-icon:hover {
 	color: #bd0000;
+}
+.modal-text {
+	margin-top: 20px;
+	font-size: 18px;
+}
+.modal-button-no {
+	width: 150px;
+	position: absolute;
+    bottom: 15px;
+    left: 34%
+}
+.modal-button-yes {
+	width: 150px;
+	position: absolute;
+    bottom: 15px;
+    left: 67%;
 }
