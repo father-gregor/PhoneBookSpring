@@ -1,6 +1,9 @@
 <div class="container" ng-cloak>
-	<button type="button" class="btn btn-default" ng-click="getPath('/create-entry')">Create entry</button>
-	<div>Search in phonebook: <input type="text" class="form-control" placeholder="What to search for?" ng-model="searchQuery"></div>
+	<button type="button" style="margin-bottom: 10px" class="btn btn-default" ng-click="getPath('/create-entry')">Create entry</button>
+	<div class="form-group">
+		<label style="margin-right: 15px" for="search-query">Search Query:</label>
+		<input type="text" class="form-control" id="search-query" placeholder="What to search for?" ng-model="searchQuery">	
+	</div>
 	<table class="table table-hover">
 		<thead>
 			<tr>

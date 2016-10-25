@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html> 
 <head>
-    <title>Spring Framework Guru</title>
+    <title>Phonebook | Save your contacts here</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <base href="/"></base>
+    <link href="css/favicon2.ico" rel="shortcut icon" type="image/x-icon"></link>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
-    <link href="css/style-index.css" type="text/css" rel="stylesheet"></link>
     <link href="css/style-register.css" rel="stylesheet"></link>
     <link href="css/style-auth.css" rel="stylesheet"></link>
     <link href="css/style-dash.css" rel="stylesheet"></link>
     <link href="css/style-edit.css" rel="stylesheet"></link>
+    <link href="css/style-create.css" rel="stylesheet"></link>
+    <link href="css/style-index.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body ng-app="PhonebookApp" class="ng-cloak" ng-show="showPage">
 	<nav class="navbar navbar-default" ng-controller="AppController">
 	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="{{!authenticated? '/': '/dashboard'}}">WebSiteName</a>
+	    <div class="navbar-header" id="site-header">
+	      <a class="navbar-brand" id="site-title" href="{{!authenticated? '/': '/dashboard'}}">Online Phonebook</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="{{!authenticated? '/': '/dashboard'}}">Home</a></li>
-	      <li ng-show="!authenticated"><a href="/register">Register</a></li>
-	      <li ng-show="authenticated"><a href="" ng-click="logout()">Logout</a></li> 
-	      <li><a href="#">Page 3</a></li> 
+	      <li class="tab-nav"><a class="tab-link" id="home-tab" href="{{!authenticated? '/': '/dashboard'}}">Home</a></li>
+	      <li class="tab-nav" ng-show="!authenticated"><a class="tab-link" href="/register">Register</a></li>
+	      <li class="tab-nav" style="float:right" ng-show="authenticated"><a class="tab-link" href="" ng-click="logout()">Logout</a></li> 
+	      <li class="tab-nav"><a class="tab-link" ng-show="authenticated" href="/profile">Your Profile</a></li> 
 	    </ul>
 	  </div>
 	</nav>

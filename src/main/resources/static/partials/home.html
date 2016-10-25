@@ -1,4 +1,6 @@
-<h1 class="text-center">Welcome to mini Phonebook app</h1>
-<h2 class="text-center">
-	<button ng-click="getPath('/register')" class="btn btn-primary">Register</button> or <button ng-click="getPath('/auth')" class="btn btn-primary">Sign-in</button>
-</h2>
+<div ng-show="!authenticated">
+	<h1 class="text-center">Welcome to mini Phonebook app</h1>
+	<h2 class="text-center">
+		<button ng-click="getPath('/register')" class="btn btn-primary">Register</button> or <button ng-click="getPath('/auth')" class="btn btn-primary">Sign-in</button>
+	</h2>
+</div>
