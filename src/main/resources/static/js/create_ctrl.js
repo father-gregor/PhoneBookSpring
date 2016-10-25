@@ -7,7 +7,7 @@ app.controller("CreationController", function($scope, $rootScope, $location, App
 		if($scope.entry_form.$valid) {
 			AppService.sendNewEntry($scope.entry)
 			.then(function(resp) {
-				$location.path(resp.data);
+				//$location.path(resp.data);
 				//console.log(resp);
 			});
 		}
