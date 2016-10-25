@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +19,12 @@ public class PhonebookServiceImpl implements PhonebookService {
 
 	@Autowired
 	public PhonebookDao dao;
+	@Autowired
+	public PasswordEncoder encoder;
 	@Override
 	public boolean addNewUser(User user) {
 		if(dao.findUserByUsername(user.getLogin()) == null) {
+			user.setPassword(encoder.encode(user.getPassword()));
 			user.setProfiles(getProfiles());
 			dao.saveUser(user);
 			return true;
