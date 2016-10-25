@@ -1,7 +1,29 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
-
+.navbar {
+	background-color: #3f3f3f;
+	color: #f0f0f0;
+	border-radius: 0px;
+	border-color: #3f3f3f;
+	border: 0px;
+}
+div.navbar-header#site-header {
+	margin-right: 15px;
+}
+#site-title {
+	font-size: 19px;
+	color: #ffffff;
+}
+.navbar-nav>li.tab-nav>a.tab-link {
+	color: #d6d6d6;
+}
+.navbar-nav>li.tab-nav>a.tab-link:hover {
+	color: white;
+}
+.active>a {
+	background-color: #3f3f3f !important;
+}
 /*############--MODAL DIALOG--#############*/
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
