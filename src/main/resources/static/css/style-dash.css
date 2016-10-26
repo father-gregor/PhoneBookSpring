@@ -1,3 +1,12 @@
+body {
+	background: #f1f1f1;
+}
+.dash-container {
+	background: #ffffff;
+	padding: 20px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.1);
+	min-height: 700px;
+}
 table {
 	
 }
@@ -69,7 +78,8 @@ tr th {
 ul.pagination {
     display: inline-block;
     padding: 0;
-    margin: 0;
+    display: table;
+    margin: 0 auto;
 }
 ul.pagination li {
 	display: inline;
