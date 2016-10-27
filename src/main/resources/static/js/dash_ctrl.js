@@ -4,13 +4,17 @@ app.controller("DashController", function($scope, $location, AppService, EntrySe
 	$scope.sortType = "name";
 	$scope.sortReverse = false;
 	$scope.tableSize = 12;
+	$scope.currPos = 0;
 	$scope.getEntry = function() {
 		AppService.getEntry()
 		.then(function(resp) {
 			if(resp.data.length > 0) {
 				console.log(resp.data);
-				$scope.initializeTable(resp.data);
-				//$scope.entries = resp.data;
+				//$scope.initializeTable(resp.data);
+				console.log(resp.data);
+				$scope.entries = resp.data;
+				$scope.pageCount = parseInt(resp.data.length/$scope.tableSize) + 1;
+				$scope.selectedPage = 1;
 			}
 		});
 	}
@@ -64,12 +68,11 @@ app.controller("DashController", function($scope, $location, AppService, EntrySe
 	$scope.isArrowDown = function(type) {
 		return $scope.sortType === type && !$scope.sortReverse;
 	}
-	$scope.getPageCount = function(count) {
-		return new Array(count)
+	$scope.getPageCount = function() {
+		return new Array($scope.pageCount);
 	}
 	$scope.displayTablePage = function(page) {
-		$scope.entries = [];
-		for(var i = $scope.tableSize*(page-1); i < $scope.tableSize*page; i++)
-			$scope.entries.push($scope.entriesAll[i]);
+		$scope.currPos = $scope.tableSize * (page - 1);
+		$scope.selectedPage = page;
 	}
  });
