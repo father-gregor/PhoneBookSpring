@@ -4,44 +4,46 @@
 		<label style="margin-right: 15px" for="search-query">Search Query:</label>
 		<input type="text" class="form-control" id="search-query" placeholder="What to search for?" ng-model="searchQuery">	
 	</div>
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th ng-click="changeSortType('name')">
-					Name
-					<div ng-show="isArrowUp('name')" class="arrow-up"></div>
-					<div ng-show="isArrowDown('name')" class="arrow-down"></div>
-				</th>
-				<th ng-click="changeSortType('surname')">
-					Surname
-					<div ng-show="isArrowUp('surname')" class="arrow-up"></div>
-					<div ng-show="isArrowDown('surname')" class="arrow-down"></div>
-				</th>
-				<th ng-click="changeSortType('fatherName')">
-					Fathername
-					<div ng-show="isArrowUp('fatherName')" class="arrow-up"></div>
-					<div ng-show="isArrowDown('fatherName')" class="arrow-down"></div>
-				</th>
-				<th ng-click="changeSortType('mobileNumb')">
-					Mobile Number
-					<div ng-show="isArrowUp('mobileNumb')" class="arrow-up"></div>
-					<div ng-show="isArrowDown('mobileNumb')" class="arrow-down"></div>
-				</th>
-			</tr>
-		</thead>
-	<tbody ng-show="entries">
-      <tr ng-repeat="x in entries | orderBy:sortType:sortReverse | filter:searchQuery track by $index" ng-click="openEntry(x)" ng-mouseover="deleteIcon=true" ng-mouseleave="deleteIcon=false">
-        <td>{{x.name}}</td>
-        <td>{{x.surname}}</td>
-        <td>{{x.fatherName}}</td>
-        <td>{{x.mobileNumb}} <span class="glyphicon glyphicon-remove delete-icon" ng-click="toggleModal(x,$event)" ng-show="deleteIcon"></span></td>
-      </tr>
-    </tbody>
-	</table>
+	<div style="min-height: 500px">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th ng-click="changeSortType('name')">
+						Name
+						<div ng-show="isArrowUp('name')" class="arrow-up"></div>
+						<div ng-show="isArrowDown('name')" class="arrow-down"></div>
+					</th>
+					<th ng-click="changeSortType('surname')">
+						Surname
+						<div ng-show="isArrowUp('surname')" class="arrow-up"></div>
+						<div ng-show="isArrowDown('surname')" class="arrow-down"></div>
+					</th>
+					<th ng-click="changeSortType('fatherName')">
+						Fathername
+						<div ng-show="isArrowUp('fatherName')" class="arrow-up"></div>
+						<div ng-show="isArrowDown('fatherName')" class="arrow-down"></div>
+					</th>
+					<th ng-click="changeSortType('mobileNumb')">
+						Mobile Number
+						<div ng-show="isArrowUp('mobileNumb')" class="arrow-up"></div>
+						<div ng-show="isArrowDown('mobileNumb')" class="arrow-down"></div>
+					</th>
+				</tr>
+			</thead>
+		<tbody ng-show="entries">
+	      <tr ng-repeat="x in entries | limitTo:tableSize:currPos | orderBy:sortType:sortReverse | filter:searchQuery track by $index" ng-click="openEntry(x)" ng-mouseover="deleteIcon=true" ng-mouseleave="deleteIcon=false">
+	        <td>{{x.name}}</td>
+	        <td>{{x.surname}}</td>
+	        <td>{{x.fatherName}}</td>
+	        <td>{{x.mobileNumb}} <span class="glyphicon glyphicon-remove delete-icon" ng-click="toggleModal(x,$event)" ng-show="deleteIcon"></span></td>
+	      </tr>
+	    </tbody>
+		</table>
+	</div>
 	<ul class="pagination" ng-show="pageCount">
 		<li><a href=""><<</a></li>
-	  	<li ng-repeat="x in getPageCount(pageCount) track by $index">
-	  		<a href="" ng-click="displayTablePage($index+1)">
+	  	<li ng-repeat="x in getPageCount() track by $index">
+			<a href="" class="page-url" ng-class="{'active': selectedPage === {{$index+1}}}" ng-click="displayTablePage($index+1)">
 	  			{{$index+1}}
 	  		</a>
 	  	</li>
