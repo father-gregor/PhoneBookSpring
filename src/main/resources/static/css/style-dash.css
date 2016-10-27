@@ -91,7 +91,13 @@ ul.pagination li a {
     text-decoration: none;
 }
 ul.pagination li a.active {
-    background-color: #4CAF50;
-    color: white;
+	color: #ffffff;
+	background: #6c686b;
 }
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+ul.pagination li a.active:hover {
+	color: #ffffff;
+	background: #8b878a;
+}
+ul.pagination li a:hover:not(.active) {
+	background-color: ;
+}
