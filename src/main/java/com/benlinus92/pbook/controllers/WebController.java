@@ -21,7 +21,7 @@ import com.benlinus92.pbook.domains.User;
 import com.benlinus92.pbook.service.PhonebookService;
 
 @Controller
-public class WebController {
+public class WebController  {
 
 	@Autowired
 	PhonebookService service;
@@ -38,6 +38,11 @@ public class WebController {
 		//return "forward:/index.html";
 	}
 
+	/*@RequestMapping(value="/error")
+	public String errorTest() {
+		System.out.println("ERROR");
+		return "/";
+	}*/
 	@RequestMapping(value="/register-user", method=RequestMethod.POST, produces="text/plain")
 	public @ResponseBody String createUser(@RequestBody User user) {
 		System.out.println("USER TRANSMITTED");
