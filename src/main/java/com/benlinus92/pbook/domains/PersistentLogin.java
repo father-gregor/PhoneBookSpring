@@ -1,6 +1,7 @@
 package com.benlinus92.pbook.domains;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="persistent_logins")
-public class PersistentLogin {
+public class PersistentLogin implements Serializable {
 	@Id
 	private String series;
 	@Column(nullable=false)

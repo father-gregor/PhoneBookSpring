@@ -58,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/dashboard",  "/create-entry").hasRole("USER")
 		.and().formLogin().loginPage("/auth")
 		.usernameParameter("login").passwordParameter("password").defaultSuccessUrl("/dashboard")
-		.and().rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository).tokenValiditySeconds(10000)
+		.and().rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository).tokenValiditySeconds(86000)
 		.and().exceptionHandling().accessDeniedPage("/")
 		.and().csrf().disable();
 	}

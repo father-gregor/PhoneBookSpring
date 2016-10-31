@@ -5,16 +5,21 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.benlinus92.pbook.domains.Entry;
 import com.benlinus92.pbook.domains.User;
@@ -38,14 +43,8 @@ public class WebController  {
 		//return "forward:/index.html";
 	}
 
-	/*@RequestMapping(value="/error")
-	public String errorTest() {
-		System.out.println("ERROR");
-		return "/";
-	}*/
 	@RequestMapping(value="/register-user", method=RequestMethod.POST, produces="text/plain")
 	public @ResponseBody String createUser(@RequestBody User user) {
-		System.out.println("USER TRANSMITTED");
 		service.addNewUser(user);
 		return "/auth";
 	}
@@ -102,6 +101,13 @@ public class WebController  {
 		return "/dashboard";
 	}
 	
+	@ExceptionHandler(Exception.class)
+	@ResponseBody
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public String handleException(Exception e) {
+		System.out.println(e.toString());
+	    return e.toString();
+	}
 	private String getPrincipal() {
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
