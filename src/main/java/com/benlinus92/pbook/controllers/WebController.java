@@ -101,13 +101,13 @@ public class WebController  {
 		return "/dashboard";
 	}
 	
-	@ExceptionHandler(Exception.class)
+	/*@ExceptionHandler(Exception.class)
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public String handleException(Exception e) {
 		System.out.println(e.toString());
 	    return e.toString();
-	}
+	}*/
 	private String getPrincipal() {
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

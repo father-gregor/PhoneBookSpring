@@ -55,7 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/", "/home", "/register", "/auth").permitAll()
-		.antMatchers("/dashboard",  "/create-entry").hasRole("USER")
+		.antMatchers("/dashboard",  "/create-entry", "/edit-entry/**").hasRole("USER")
 		.and().formLogin().loginPage("/auth")
 		.usernameParameter("login").passwordParameter("password").defaultSuccessUrl("/dashboard")
 		.and().rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository).tokenValiditySeconds(86000)
