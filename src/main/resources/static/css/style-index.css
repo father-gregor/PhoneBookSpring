@@ -35,6 +35,12 @@ div.navbar-header#site-header {
 .active>a {
 	background-color: #3f3f3f !important;
 }
+.home-screen {
+	position: absolute;
+	top: 30%;
+	left:50%;
+	transform: translate(-50%,-50%);
+}
 /*############--MODAL DIALOG--#############*/
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */

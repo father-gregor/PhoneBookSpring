@@ -25,6 +25,10 @@ app.config(function($routeProvider, $locationProvider) {
 	.when("/edit-entry/:entryId", {
 		templateUrl: "partials/edit.html",
 		controller: "EditController"
+	})
+	.when("/profile", {
+		templateUrl: "partials/profile.html",
+		controller: "ProfileController"
 	});
 	$locationProvider.html5Mode(true);
 });

@@ -1,5 +1,5 @@
 
-app.controller("DashController", function($scope, $location, AppService, EntryService) {
+app.controller("DashController", function($scope, $location, AppService) {
 	$scope.showModal = false;
 	$scope.sortType = "name";
 	$scope.sortReverse = false;
@@ -33,7 +33,6 @@ app.controller("DashController", function($scope, $location, AppService, EntrySe
 	$scope.openEntry = function(entry) {
 		console.log("1");
 		if(entry.entryId !== null) {
-			EntryService.setEntryId(entry.entryId);
 			$location.path("/edit-entry/" + entry.entryId);
 		}
 	}
