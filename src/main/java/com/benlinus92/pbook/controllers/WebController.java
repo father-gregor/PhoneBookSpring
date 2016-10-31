@@ -35,6 +35,7 @@ public class WebController  {
 		"/register",
 		"/auth",
 		"/home",
+		"/profile",
 		"/edit-entry/**"
 	})
 	public String index() {
@@ -82,8 +83,6 @@ public class WebController  {
 		Entry entry = service.getEntryById(entryId, username);
 		if(entry != null)
 			entry.setUser(null);
-		//else
-			//response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		return entry;
 	}
 	@RequestMapping(value="/update-entry", method=RequestMethod.PUT, produces="text/plain")
@@ -99,6 +98,13 @@ public class WebController  {
 		String username = getPrincipal();
 		service.deleteEntry(entryId, username);
 		return "/dashboard";
+	}
+	@RequestMapping(value="/get-userdata", method=RequestMethod.GET)
+	public @ResponseBody User getUser() {
+		String username = getPrincipal();
+		if(username != null)
+			 return service.getUserByUsername(username);
+		return null;
 	}
 	
 	/*@ExceptionHandler(Exception.class)

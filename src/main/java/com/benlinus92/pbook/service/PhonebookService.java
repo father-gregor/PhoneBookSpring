@@ -13,7 +13,7 @@ import com.benlinus92.pbook.domains.User;
 @Transactional
 public interface PhonebookService {
 	public boolean addNewUser(User user);
-	public User findUserByUsername(String username);
+	public User getUserByUsername(String username);
 	public List<Profile> getProfiles();
 	public List<Entry> getEntryByUsername(String username);
 	public void createEntry(Entry entry, String username);

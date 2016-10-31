@@ -32,7 +32,7 @@ public class PhonebookServiceImpl implements PhonebookService {
 		return false;
 	}
 	@Override
-	public User findUserByUsername(String username) {
+	public User getUserByUsername(String username) {
 		return dao.findUserByUsername(username);
 	}
 	@Override
@@ -43,7 +43,7 @@ public class PhonebookServiceImpl implements PhonebookService {
 	}
 	@Override
 	public List<Entry> getEntryByUsername(String username) {
-		User user = this.findUserByUsername(username);
+		User user = this.getUserByUsername(username);
 		if(user != null) {
 			return dao.getEntry(user);
 		} else {
@@ -52,12 +52,12 @@ public class PhonebookServiceImpl implements PhonebookService {
 	}
 	@Override
 	public void createEntry(Entry entry, String username) {
-		entry.setUser(this.findUserByUsername(username));
+		entry.setUser(this.getUserByUsername(username));
 		dao.createEntry(entry);
 	}
 	@Override
 	public Entry getEntryById(int entryId, String username) {
-		User user = this.findUserByUsername(username);
+		User user = this.getUserByUsername(username);
 		Entry entry = dao.getSingleEntry(entryId);
 		if(entry.getUser().getUserId() == user.getUserId())
 			return entry;

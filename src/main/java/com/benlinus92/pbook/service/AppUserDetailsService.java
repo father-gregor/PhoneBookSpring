@@ -21,7 +21,7 @@ public class AppUserDetailsService implements UserDetailsService {
 	private PhonebookService service;
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		User user = service.findUserByUsername(login);
+		User user = service.getUserByUsername(login);
 		if(user == null) {
 			throw new UsernameNotFoundException("User not found: " + login);
 		}
