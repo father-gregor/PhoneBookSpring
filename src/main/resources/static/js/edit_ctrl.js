@@ -8,7 +8,11 @@ app.controller("EditController", function($scope, $rootScope, $location, $routeP
 			if(resp.data !== null) {
 				console.log(resp.data);
 				$scope.entry = resp.data;
+				$scope.entryReceived = true;
 			}
+		},
+		function errorHandler1(error) {
+			$location.path("/dashboard");
 		});
 	}
 	$scope.getEntry();
