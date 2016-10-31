@@ -4,6 +4,7 @@
     <title>Phonebook | Save your contacts here</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <base href="/"></base>
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
     <link href="phonefavicon.ico" rel="shortcut icon" type="image/x-icon"></link>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
     <link href="css/style-register.css" rel="stylesheet"></link>
@@ -22,8 +23,11 @@
 	    <ul class="nav navbar-nav">
 	      <li class="tab-nav"><a class="tab-link" id="home-tab" href="{{!authenticated? '/': '/dashboard'}}">Home</a></li>
 	      <li class="tab-nav" ng-show="!authenticated"><a class="tab-link" href="/register">Register</a></li>
-	      <li class="tab-nav" style="float:right" ng-show="authenticated"><a class="tab-link" href="" ng-click="logout()">Logout</a></li> 
+	      <li class="tab-nav" ng-show="!authenticated"><a class="tab-link" href="/auth">Sign-In</a></li>
 	      <li class="tab-nav"><a class="tab-link" ng-show="authenticated" href="/profile">Your Profile</a></li> 
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li class="tab-nav" ng-show="authenticated"><a class="tab-link" href="" ng-click="logout()">Logout</a></li>
 	    </ul>
 	  </div>
 	</nav>
